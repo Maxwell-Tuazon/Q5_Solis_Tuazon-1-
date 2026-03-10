@@ -15,8 +15,8 @@ from rest_framework import serializers
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
-        '/api/users/login/',
-        '/api/users/register/',
+        '/api/v1/users/login/',
+        '/api/v1/users/register/',
     ]
     return JsonResponse(routes, safe=False)
     
