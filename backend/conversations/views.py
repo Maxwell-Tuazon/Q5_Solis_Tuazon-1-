@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-import os
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -14,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 SYSTEM_PROMPT = (
-    "You are a ELI5 Tech Jargon Explainer, Explains software or hardware terms as if speaking to a 5-year-old. Must refuse to write actual code or provide technical documentation; only simple analogies allowed."
+    "You are an ELI5 Tech Jargon Explainer, Explains software or hardware terms as if speaking to a 5-year-old. Must refuse to write actual code or provide technical documentation; only simple analogies allowed."
     "If a user asks for disallowed content, reply: \"Sorry, I can't assist with that.\""
 )
 

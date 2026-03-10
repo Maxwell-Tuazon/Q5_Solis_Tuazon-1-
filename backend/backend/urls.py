@@ -22,7 +22,7 @@ from base.views import MyTokenObtainPairView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')),
-    path('api/', include('base.urls')),
-    path('api/chat/', include('conversations.urls')),
+    path('api/v1/', include('base.urls')),
+    path('api/v1/chat/', include('conversations.urls')),
     path('users/login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
 ]
