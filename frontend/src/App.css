@@ -1,0 +1,214 @@
+:root {
+  --bg: #f7f7f8;
+  --sidebar: #f1f2f4;
+  --text: #191919;
+  --muted: #666;
+  --line: #e2e4e8;
+  --pill: #fff;
+  --shadow: 0 8px 24px rgba(20, 20, 20, 0.08);
+}
+
+.chatgpt-shell {
+  min-height: 100vh;
+  display: flex;
+  background: radial-gradient(
+    circle at 10% 12%,
+    #fcfcfd 0%,
+    var(--bg) 36%,
+    #f0f1f3 100%
+  );
+  color: var(--text);
+}
+
+.chatgpt-sidebar {
+  width: 260px;
+  background: var(--sidebar);
+  border-right: 1px solid var(--line);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brand-row {
+  border: 1px solid #d4d7dd;
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.chat-history {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.history-item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 12px;
+  color: #303030;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background: #e9ebef;
+}
+
+.chatgpt-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.chatgpt-main h1 {
+  margin: 0 0 28px;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.mobile-history {
+  display: none;
+}
+
+.prompt-form {
+  width: min(760px, 92%);
+  height: 56px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--pill);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  gap: 8px;
+}
+
+.prompt-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: transparent;
+}
+
+.prompt-form input::placeholder {
+  color: #8c8c8c;
+}
+
+.icon-btn {
+  border: none;
+  background: transparent;
+  color: #616161;
+  cursor: pointer;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.icon-btn:hover {
+  background: #f0f0f2;
+}
+
+.send-btn {
+  border: none;
+  background: #101010;
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .chatgpt-sidebar {
+    display: none;
+  }
+
+  .chatgpt-main {
+    padding: 18px 14px;
+  }
+
+  .prompt-form {
+    width: 100%;
+  }
+
+  .mobile-history {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 0 14px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .mobile-history-item {
+    border: 1px solid var(--line);
+    background: #fff;
+    color: #3a3a3a;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .chatgpt-main h1 {
+    margin-bottom: 18px;
+    font-size: clamp(20px, 7vw, 28px);
+  }
+
+  .prompt-form {
+    height: 52px;
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .prompt-form input {
+    font-size: 14px;
+  }
+
+  .icon-btn {
+    min-width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .send-btn {
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 420px) {
+  .chatgpt-main {
+    padding: 14px 10px;
+  }
+
+  .prompt-form {
+    height: 48px;
+    border-radius: 16px;
+  }
+
+  .send-btn {
+    padding: 6px 10px;
+    min-width: 52px;
+  }
+}
