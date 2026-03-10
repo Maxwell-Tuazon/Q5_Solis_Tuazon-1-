@@ -29,7 +29,7 @@ def chat_endpoint(request):
     if not message:
         return JsonResponse({'error': 'Missing "message" field'}, status=400)
 
-    client = genai.Client(api_key=" ") #Insert API key here
+    client = genai.Client(api_key="AIzaSyASHl13Jce5E_E9Q-rAr60xAXwQEGMJRiA") #Insert API key here
 
     try:
         logger.debug('chat_endpoint called with payload: %s', payload)
