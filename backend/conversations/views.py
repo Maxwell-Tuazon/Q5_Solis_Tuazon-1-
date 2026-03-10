@@ -60,3 +60,18 @@ def chat_view(request):
         tb = traceback.format_exc()
         # Still return a concise error to the client
         return JsonResponse({'error': 'AI call failed', 'details': str(e)}, status=502)
+
+@api_view(['GET'])
+def conversation_list_view(request):
+    conversations = Conversation.objects.filter(user=request.user).order_by('-updated_at')
+    serializer = ConversationSerializer(conversations, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])   
+def conversation_detail_view(request, pk):
+    try:
+        conversation = Conversation.objects.get(_id=pk, user=request.user)
+        serializer = ConversationSerializer(conversation, many=False)
+        return Response(serializer.data)
+    except Conversation.DoesNotExist:
+        return Response({'detail': 'Conversation not found'}, status=404)
