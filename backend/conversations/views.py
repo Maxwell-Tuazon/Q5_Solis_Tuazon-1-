@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.http import JsonResponse
 
 import json
 from django.http import JsonResponse
@@ -9,7 +12,6 @@ from google import genai
 import logging
 import traceback
 
-logger = logging.getLogger(__name__)
 
 SYSTEM_PROMPT = (
     "You are an ELI5 Tech Jargon Explainer, Explains software or hardware terms as if speaking to a 5-year-old. Must refuse to write actual code or provide technical documentation; only simple analogies allowed."
@@ -19,7 +21,7 @@ SYSTEM_PROMPT = (
 
 @csrf_exempt
 @require_http_methods(["POST"])
-def chat_endpoint(request):
+def chat_view(request):
     try:
         payload = json.loads(request.body.decode('utf-8'))
     except Exception:
@@ -29,10 +31,10 @@ def chat_endpoint(request):
     if not message:
         return JsonResponse({'error': 'Missing "message" field'}, status=400)
 
-    client = genai.Client(api_key="AIzaSyASHl13Jce5E_E9Q-rAr60xAXwQEGMJRiA") #Insert API key here
+    client = genai.Client(api_key=" ") #Insert API key here
 
     try:
-        logger.debug('chat_endpoint called with payload: %s', payload)
+        logger.debug('chat_view called with payload: %s', payload)
         # Prepend system prompt to the user message so the model receives role instructions
         combined = f"System: {SYSTEM_PROMPT}\n\nUser: {message}"
         # Use the models.generate_content API to produce text output
