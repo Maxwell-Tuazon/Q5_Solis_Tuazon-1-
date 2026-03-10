@@ -15,8 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+
+from base.views import MyTokenObtainPairView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('base.urls')),
+    path('api/', include('base.urls')),
+    path('api/chat/', include('conversations.urls')),
+    path('users/login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
 ]
